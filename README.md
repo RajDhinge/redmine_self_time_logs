@@ -17,3 +17,7 @@ TO-DO
 * if no access to all the user list default to current user ID.
 * select the month from the GUI to view the data.
 * Add a graphical view using charts so the data can be visualized.
+
+GUI Credits:
+joey : https://codepen.io/jopico
+https://codepen.io/jopico/pen/EGpim
