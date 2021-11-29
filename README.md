@@ -1,5 +1,9 @@
 # Single php file script to view redmine self time logs
 
+Purpose
+
+This script is created with intention to visualize the data in numbers or be it in charts format using this script we will be able to track / monitor the time logs seamlessly
+
 Features
 
 * Shows number of distinct tickets addressed.
