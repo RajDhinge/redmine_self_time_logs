@@ -228,11 +228,11 @@ table.fold-table > tbody > tr.fold.open {
 
               //fold
               $fold .=
-                  "<tr><td><a href='https://support.mirealux.com/issues/" .
+                  "<tr><td><a href='$domain/issues/" .
                   $invalue->issue->id .
                   "'>#" .
                   $invalue->issue->id .
-                  " </a><a href='https://support.mirealux.com/time_entries/" .
+                  " </a><a href='$domain/time_entries/" .
                   $invalue->id .
                   "/edit'> - [EDIT]</a></td>";
               $fold .= "<td>" . $invalue->project->name . "</td>";
