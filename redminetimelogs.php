@@ -287,7 +287,7 @@ table.fold-table > tbody > tr.fold.open {
       $totalabsticketsadd = count(printDistinct($absarr1, $n));
   }
   //var_dump(printDistinct($absarr1, $n));
-  echo "<h1>Rajkumar Dhinge's activity for " .
+  echo "<h1>Users's activity for " .
       date("M") .
       " " .
       date("Y") .
