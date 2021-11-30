@@ -2,7 +2,7 @@
 
 # Purpose
 
-This script is created with intention to visualize the data in numbers or be it in charts format using this script we will be able to track / monitor the time logs seamlessly
+This script is created with intention to visualize the data in numbers or be it in charts format using this script we will be able to track / monitor the redmine time logs seamlessly
 
 # Prerequisites
 
