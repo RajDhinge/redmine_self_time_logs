@@ -19,9 +19,9 @@ Details on retriving the key : https://www.redmine.org/projects/redmine/wiki/res
 
 # Features
 
-* Shows number of distinct tickets addressed.
-* Shows data only for current month till the current date
-* Shows the average time spent each day
+* Shows number of distinct tickets addressed. ( currently it is filtered out  )
+* Shows data only for current month till the current date ( for the dates activity was logged )
+* Shows the average time spent each day ( based on the total number of different days you logged the activity )
 * Shows the list of tickets for which the data was logged
 * A neat accordian table is implemented to sort out logs according to each date. 
 
