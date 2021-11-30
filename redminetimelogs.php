@@ -1,4 +1,49 @@
 <!DOCTYPE html>
+<?php
+//Current date and start date
+date_default_timezone_set("Asia/Kolkata");
+$now = date("d"); // or your date as well
+$your_date = strtotime(date("Y") . "-" . date("m") . "-1"); //first dat of current month
+$currentdate = date("Y") . "-" . date("m") . "-$now";
+$startdate = date("Y") . "-" . date("m") . "-01";
+//Redmine specific URL setup
+$domain = "YOUR_DOMAIN";
+$key = "YOUR_KEY";
+
+//Current user
+if (isset($_GET["userid"])) {
+    $userid = $_GET["userid"];
+}
+
+if (!isset($userid)) {
+    // fallback
+    $user = "$domain/users/current.json?key=$key";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL, $user);
+    $res = curl_exec($ch);
+    $data = json_decode($res);
+    $userid = $data->user->id;
+}
+$user = "$domain/users/$userid.json?key=$key";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_URL, $user);
+$res = curl_exec($ch);
+$data = json_decode($res);
+if (!isset($data->user->id)) {
+    // fallback
+    $user = "$domain/users/current.json?key=$key";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_URL, $user);
+    $res = curl_exec($ch);
+    $data = json_decode($res);
+    $userid = $data->user->id;
+}
+$name = $data->user->firstname . " " . $data->user->lastname;
+$query = "/time_entries.json?key=$key&user_id=$userid&from=$startdate&to=$currentdate&limit=100000";
+?>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
@@ -101,6 +146,10 @@ table.fold-table > tbody > tr.fold.open {
 </head>
 <body>
 <!-- partial:index.partial.html -->
+<form action=# method=get>
+  <b>Fetch User logs by ID : </b><input type="text" name="userid" id="userid" />
+  <input class="btn btn-small btn-info"  type=submit>
+</form>
 <table class="fold-table">
   <thead>
     <tr>
@@ -112,18 +161,6 @@ table.fold-table > tbody > tr.fold.open {
 
 
   <?php
-  //current date and start date
-  date_default_timezone_set("Asia/Kolkata");
-  $now = date("d"); // or your date as well
-  $your_date = strtotime(date("Y") . "-" . date("m") . "-1"); //first dat of current month
-  $currentdate = date("Y") . "-" . date("m") . "-$now";
-  $startdate = date("Y") . "-" . date("m") . "-01";
-
-  $domain = "YOUR_DOMAIN";
-  $key = "YOUR_KEY";
-  $userid = "YOUR_USER_ID";
-  $query = "/time_entries.json?key=$key&user_id=$userid&from=$startdate&to=$currentdate&limit=100000";
-
   //helper function
   function printDistinct($arr, $n)
   {
@@ -287,7 +324,7 @@ table.fold-table > tbody > tr.fold.open {
       $totalabsticketsadd = count(printDistinct($absarr1, $n));
   }
   //var_dump(printDistinct($absarr1, $n));
-  echo "<h1>Users's activity for " .
+  echo "<h1>$name's activity for " .
       date("M") .
       " " .
       date("Y") .
@@ -301,7 +338,7 @@ table.fold-table > tbody > tr.fold.open {
       number_format((float) $abstotal / $count, 2, ".", "") .
       " hours) </h2>";
   ?>
-    
+
   </tbody>
 </table>
 <!-- partial -->
