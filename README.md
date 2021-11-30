@@ -1,15 +1,15 @@
 # Single php file script to view redmine self time logs
 
-#Purpose
+# Purpose
 
 This script is created with intention to visualize the data in numbers or be it in charts format using this script we will be able to track / monitor the time logs seamlessly
 
-#Prerequisites
+# Prerequisites
 
 We need to make sure the REST API setting is enabled through the admin section  
 more details : https://www.redmine.org/projects/redmine/wiki/rest_api
 
-#Setup
+# Setup
 
 you will need to update these two lines in the php file that contains
 * $domain = "YOUR_DOMAIN";
@@ -17,7 +17,7 @@ you will need to update these two lines in the php file that contains
 Details on retriving the key : https://www.redmine.org/projects/redmine/wiki/rest_api
 
 
-#Features
+# Features
 
 * Shows number of distinct tickets addressed.
 * Shows data only for current month till the current date
@@ -25,7 +25,7 @@ Details on retriving the key : https://www.redmine.org/projects/redmine/wiki/res
 * Shows the list of tickets for which the data was logged
 * A neat accordian table is implemented to sort out logs according to each date. 
 
-#TO-DO
+# TO-DO
 
 * Code sanitization.
 * Optimization.
